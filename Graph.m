@@ -24,7 +24,7 @@ classdef Graph
 	end
 
 
-	% a ring graph
-	% a grid graph
+	% a ring graph - simple method to make one
+	% a grid graph - simple method to make one
 
 end
