@@ -1,4 +1,4 @@
-function [ P, H, T ] = stochastic_matrix( h, t, G )
+function [ P, H, V, D ] = stochastic_matrix( h, t, G )
 %UNTITLED Summary of this function goes here
 %   Pass in 3 paramaters:
 %   h - 4 by 4 matrix defening the interaction of 2 qubits
@@ -20,7 +20,7 @@ function [ P, H, T ] = stochastic_matrix( h, t, G )
     %obtain the eigenvalue and eigenvectors of the hamiltonian
     [V, D] = eig(H);
     
-    P = conj(V)*T*V;
+    P = conj((V.'))*T*V;
     
     
  

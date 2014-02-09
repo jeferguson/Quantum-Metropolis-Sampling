@@ -7,7 +7,7 @@ G = Ring(3);
 
 t = [0 1; 1 0];
 
-[P, H, T] = stochastic_matrix(q, t, G);
+[P, H, V, D] = stochastic_matrix(q, t, G);
 
 
 
