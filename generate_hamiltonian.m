@@ -26,6 +26,7 @@ B = get_binary_numbers(qubit_count);
 Hamiltonian = zeros(2^qubit_count, 2^qubit_count);
 
 for i =1 : edge_count
-	Hamiltonian = Hamiltonian + tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
+	  Hij = tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
+      Hamiltonian = Hamiltonian + Hij;
 end
 

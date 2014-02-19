@@ -1,7 +1,8 @@
 %method call to generate the hamiltonian matrix
 %input is a 2 by 2 matrix h and an i,j 
 
-%then compare each boolean strings - if everything else but i and j matches, then we consult the 2 by 2 matrix
+%then compare each boolean strings - if everything else but i and j
+%matches, then we consult the 2 by 2 matrix H
 
 
 %	to compute the boolean strings
@@ -9,8 +10,10 @@
 %	using the function: de2bi(d,n), where d is the number and n is number of columns (10 more now) 
 %		actually this will not work because we do not have a liscense for this number
 
-% this function will return a matrix H, corresponding to the Hij matrix, and be passed in a matrix B 
+% this function will return a matrix  Hij matrix, and be passed in a matrix B 
 % of all binary numbers represented, and and k (i), l (j), of which to construct the corresponding Hij matrix
+
+% can use kron(X, Y) to take the tensor product of X and Y
 
 function [Hij] = tensor_with_identidy(H, B, k, l)
 
@@ -30,10 +33,9 @@ Hij = zeros(matrix_size, matrix_size);
 % matrix and we use the l value to compute the tensor product to get a 
 % 2^n by 2^n matrix
 
-
+% if l > 0, then H is a 4 by 4 matrix defining the interacton of 2 qubits,
+% and we compare two bits in each binary string
 if l > 0	
-	%this is probably the not the most optimal way of doing this... Now we
-    % must find a way to optomize for matricies of MUCH larger sizes 
 	for a = 1:matrix_size
 		for b = 1:matrix_size
 			isMatch = 1;
@@ -54,7 +56,8 @@ if l > 0
 
 % for tensoring with a 2 by 2 matrix
 % if the value passed in for the second index is a 0 or negative value,
-% then we know the matrix H passed in is an 
+% then we know the matrix H passed in is a 2 by 2 matrix, and we are only
+% comparing one bit each of the tensor product
 elseif (l <= 0)
 	for a = 1:matrix_size
 		for b = 1:matrix_size
