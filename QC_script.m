@@ -3,7 +3,7 @@
 q = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
 
 % creates a ring graph of size 5
-G = Ring(5);
+G = Ring(3);
 
 b = 1/5;
 

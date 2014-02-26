@@ -42,7 +42,7 @@ function [ S, b ] = check_stoc( M, r )
     
     b = 1;
     i = 1;
-    while( (i <= length(S) ) && ( b == 1)  )
+    while( (i <= cols ) && ( b == 1)  )
         if(S(i, 1) ~= 1)
             b = 0;
         end
