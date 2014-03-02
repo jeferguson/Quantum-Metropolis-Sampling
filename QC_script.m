@@ -10,10 +10,15 @@ b = 1/5;
 % the transform which we use to calculate the stochastic matrix
 t = [0 1; 1 0];
 
-[P, V, D, T, H] = stochastic_matrix(q, t, G);
+[K, V, D, T, H] = stochastic_matrix(q, t, G);
 
 
 %not needed right now
-%A = accept_prob(D, b);
-%W = state_prob(D, b);
+A = accept_prob(D, b);
+W = state_prob(D, b);
+
+
+Z = K.*A;
+
+Z_s = make_stoc(Z);
 
