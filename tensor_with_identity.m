@@ -58,20 +58,24 @@ if l > 0
 % if the value passed in for the second index is a 0 or negative value,
 % then we know the matrix H passed in is a 2 by 2 matrix, and we are only
 % comparing one bit each of the tensor product
+
+% implement a RANDOM bit flip
+r = randi(1, bit_count);
+
 elseif (l <= 0)
 	for a = 1:matrix_size
 		for b = 1:matrix_size
 			isMatch = 1;
 			for c = 1: bit_count
-				if (c ~= k)
+				if (c ~= r)
 					if (B(a,c) ~= B(b,c))
 						isMatch = 0;
 					end
 				end
 			end
 			if (isMatch == 1)
-				x = B(a, k) + 1;
-				y = B(b, k) + 1;
+				x = B(a, r) + 1;
+				y = B(b, r) + 1;
 				Hij(a,b) = H(x, y);
 			end
 		end
