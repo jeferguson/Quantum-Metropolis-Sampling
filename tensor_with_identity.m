@@ -28,6 +28,9 @@ bit_count = sz(2);
 Hij = zeros(matrix_size, matrix_size);
 
 
+% implement a RANDOM bit flip
+r = randi(bit_count);
+
 % for tensoring with a 4 by 4 matrix
 % if the value of the second index to be compared > 0, then H is a 4 by 4
 % matrix and we use the l value to compute the tensor product to get a 
@@ -59,8 +62,6 @@ if l > 0
 % then we know the matrix H passed in is a 2 by 2 matrix, and we are only
 % comparing one bit each of the tensor product
 
-% implement a RANDOM bit flip
-r = randi(1, bit_count);
 
 elseif (l <= 0)
 	for a = 1:matrix_size
