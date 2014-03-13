@@ -1,6 +1,8 @@
 function [ S ] = make_stoc( M )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
+%function [ S ] = make_stoc( M )
+
     dims = size(M);
 
     

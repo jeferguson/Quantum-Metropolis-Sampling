@@ -1,5 +1,6 @@
 function [ A ] = accept_prob( E, b )
 %UNTITLED2 Summary of this function goes here
+%function [ A ] = accept_prob( E, b )
 %   E: diagonal matrix of eigenvalues
 %   b: beta, the inverse tempurature of the system
 

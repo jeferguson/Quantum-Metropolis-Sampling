@@ -1,5 +1,6 @@
 function [ K, V, D, T, H] = stochastic_matrix( q, t, G )
 %UNTITLED Summary of this function goes here
+% function [ K, V, D, T, H] = stochastic_matrix( q, t, G )
 %   Pass in 3 paramaters:
 %   h - 4 by 4 matrix defening the interaction of 2 qubits
 %   t - 2 by 2 matrix defining the transformation to be applied to the

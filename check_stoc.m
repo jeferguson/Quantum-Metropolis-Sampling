@@ -1,4 +1,5 @@
-function [ S, b ] = check_stoc( M, r )
+function [b, S ] = check_stoc( M, r )
+%function [ S, b ] = check_stoc( M, r )
 % is_stochasitc_matrix takes in a Matrix M, and a boolean value r denoting 
 % whether we wish to check that M is a right_stochastic matrix, or a left
 % stochastic matrix.
@@ -14,6 +15,9 @@ function [ S, b ] = check_stoc( M, r )
     
     rows = dims(1);
     cols = dims(2);
+    
+    precision = 0.0001;
+    
     % if we wish to check that M is right stochastic, then sum up each row
     if r == 1
         S = zeros(rows, 1);
@@ -43,7 +47,7 @@ function [ S, b ] = check_stoc( M, r )
     b = 1;
     i = 1;
     while( (i <= cols ) && ( b == 1)  )
-        if(S(i, 1) ~= 1)
+        if(abs( S(i, 1) - 1) > precision)
             b = 0;
         end
         i = i + 1;

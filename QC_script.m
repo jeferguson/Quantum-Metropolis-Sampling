@@ -3,7 +3,7 @@
 q = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
 
 % creates a ring graph of size 5
-G = Ring(3);
+G = Ring(4);
 
 b = 1/5;
 
@@ -20,5 +20,5 @@ W = state_prob(D, b);
 
 Z = K.*A;
 
-Z_s = make_stoc(Z);
+Zs = make_stoc(Z);
 

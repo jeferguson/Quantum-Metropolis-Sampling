@@ -5,7 +5,7 @@ q = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
 % for higher temperaturs - 5 beta values (1/temperatures)
 b1 = [.025 .01 0.001 0.0001];
 % for low temperature values 
-b2 = [5 10 25 50];
+b2 = [50 100 250 500];
 
 
 % transform matrix
