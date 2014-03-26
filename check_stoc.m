@@ -19,7 +19,7 @@ function [b, S ] = check_stoc( M, r )
     precision = 0.0001;
     
     % if we wish to check that M is right stochastic, then sum up each row
-    if r == 1
+    if r == 0
         S = zeros(rows, 1);
         sum = 0;
         for i = 1: rows
@@ -31,7 +31,7 @@ function [b, S ] = check_stoc( M, r )
         end
     % if we wish to check that M is left stochastic, then sum up each
     % column
-    elseif r == 0
+    elseif r == 1
         S = zeros(cols, 1);
         sum = 0;
         for i = 1: cols
