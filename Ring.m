@@ -12,9 +12,9 @@ classdef Ring
         function obj = Ring(n)
             obj.V = (1:n);
             obj.E = zeros(n, 2);
-            for i = 1: n-1
+            for i = 1: n
                 obj.E(i, 1) = i;
-                obj.E(i, 2) = i+1;
+                obj.E(i, 2) = i+1;  
             end
             obj.E(n, 1) = n;
             obj.E(n, 2) = 1;

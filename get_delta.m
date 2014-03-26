@@ -1,6 +1,7 @@
 function [ d ] = get_delta( q, t, G, beta )
-%   get_delta is a function which outputs a vector of delta
-%   specifying the distance from the highest energy eigenvalue to the
+%   function [ d ] = get_delta( q, t, G, beta )
+%   get_delta is a function which outputs a delta value which
+%   specifies the distance from the highest energy eigenvalue to the
 %   second highest eigenvalue of the quantum system
 %   INPUT:
 %       q - 4x4 matrix specifying a 2bit quantum system

@@ -1,4 +1,5 @@
 function [ deltas ] = beta_n(q, t, nl, nh, y)
+%   function [ deltas ] = beta_n(q, t, nl, nh, y)
 %   beta_n is a function which outputs a vector of delta values, specifying
 %   the distance between the first and second largest eigenvalue in the
 %   corresponding stocastic eigenvector matrix to a hamiltonian system
@@ -19,10 +20,13 @@ function [ deltas ] = beta_n(q, t, nl, nh, y)
     index = 1;
     
     while  n <= nh
-        
+                
         deltas(index) = get_delta(q,t, Ring(n), sqrt(n));
         
-        n = n + t;
+        
+        n = n + y;
+        
+        G = zeros(n, 2);
         
         index = index + 1;
       
