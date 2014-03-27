@@ -16,10 +16,15 @@ t = 1;
 % boolean value to denote whether K^t has converged yet
 bool = 0;
 % the precicion value to compare which to compare entries of the K matrix
-precision = 0.0001;
+precision = 0.00001;
 
 t = 1;
+delta = 1;
 K2 = K^2;
+
+%%%% LATER, add more percision to find out the exact convergence interval
+%%%% Right now we can find it with a certain amound of percision
+
 
 while(bool == 0)
     bool = 1;
@@ -34,13 +39,15 @@ while(bool == 0)
     end
     
     if(bool == 0)
-        t = t+t;
+        t = t+delta;
+        delta = delta + delta;
         K = K2;
+        %K2 = K2.^2;
         K2 = K2^2;
     end
 end
 
-    Kc = K;
+    %Kc = K;
 
 
 end

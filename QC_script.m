@@ -20,4 +20,4 @@ dif = sort(eig(Zs), 1, 'descend');
 
 %}
 
-deltas = beta_n(q, t, 4, 12, 1);
+deltas = beta_n(q, t, 4, 4, 1);
