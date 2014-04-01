@@ -20,4 +20,9 @@ dif = sort(eig(Zs), 1, 'descend');
 
 %}
 
-deltas = beta_n(q, t, 4, 4, 1);
+deltas = beta_n(q, t, 3, 3, 1);
+
+save('qcfile.mat','deltas');
+
+
+

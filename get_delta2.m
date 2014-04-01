@@ -1,5 +1,5 @@
-function [ delta,  vi] = get_delta2( K, A )
-%   function [ d,  deltas] = get_delta2( K, A )
+function [ deltas] = get_delta2(q, t, nl, nh, beta )
+%function [ delta] = get_delta2(q, t, nl, nh, beta )
 %   returns the delta value and vector of eigenvalues (sorted)
 %   INPUT
 %   K - stochastic matrix
@@ -10,13 +10,23 @@ function [ delta,  vi] = get_delta2( K, A )
 %   vi    - sorted eigenvalues 
  
 
-        Z = K.*A;
-
-        Zs = make_stoc(Z);
+    deltas = zeros(nh - nl, 1);
     
-        vi = sort(eig(Zs), 1, 'descend');
-
-        d = vi(1) - vi(2);
+    n = nl;
+    index = 1;
+    
+    while  n <= nh
+                
+        deltas(index) = get_delta(q,t, Ring(n), beta);
+        
+        
+        n = n + 1;
+        
+        %G = zeros(n, 2);
+        
+        index = index + 1;
+      
+    end
 
 end
 

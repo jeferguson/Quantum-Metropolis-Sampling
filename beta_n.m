@@ -26,7 +26,7 @@ function [ deltas ] = beta_n(q, t, nl, nh, y)
         
         n = n + y;
         
-        G = zeros(n, 2);
+        %G = zeros(n, 2);
         
         index = index + 1;
       
