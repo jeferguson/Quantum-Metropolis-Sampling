@@ -22,7 +22,7 @@ function [ d, v ] = get_delta( q, t, G, beta )
 
         Zs = make_stoc(Z);
     
-        v = sort(eig(Zs), 1, 'descend');
+        v = sort(abs(eig(Zs)), 1, 'descend');
 
         d = v(1) - v(2);
         

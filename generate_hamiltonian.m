@@ -4,7 +4,7 @@
 % INPUT: 	a 4 by 4 matrix telling the interaction between 2 electrons, n - 
 %			and a graph G with vertices representing each electron and edges representing each connection
 
-function Hamiltonian = generate_hamiltonian(Q,G)
+function [Hamiltonian, H] = generate_hamiltonian(Q,G)
 
 % 	get the matrix representing all binary numbers based on the number or vertices in the Graph
 
@@ -29,4 +29,17 @@ for i =1 : edge_count
 	  Hij = tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
       Hamiltonian = Hamiltonian + Hij;
 end
+
+% want to ensure that this is correct and possibly use the kron(A,B), which
+% is the tensor product of two matricies instead
+
+%{
+id = eye(2^(qubit_count - 2));
+H = zeros(2^qubit_count, 2^qubit_count);
+
+for i = 1: edge_count
+    Hij = kron(id, Q);
+    H = H + Hij;
+end
+%}
 

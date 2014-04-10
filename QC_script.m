@@ -1,6 +1,14 @@
 
 %this is the hiesenbug matrix which will be referenced in the simulation
-q = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
+q1 = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
+
+
+% going to try different values for g
+g = 5;
+
+q2 = [0 0 0 0; 0 g/2 1 0; 0 1 g/2 0; 0 0 0 0];
+
+
 % the transform which we use to calculate the stochastic matrix
 t = [0 1; 1 0];
 %{
@@ -20,9 +28,9 @@ dif = sort(eig(Zs), 1, 'descend');
 
 %}
 
-deltas = beta_n(q, t, 3, 3, 1);
+%deltas = beta_n(q, t, 3, 3, 1);
 
-save('qcfile.mat','deltas');
+%save('qcfile.mat','deltas');
 
 
 
