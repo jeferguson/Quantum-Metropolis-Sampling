@@ -18,7 +18,7 @@ function [ K, V, D, T, H] = stochastic_matrix( q, t, G )
     %generates a matrix of binary numbers
     B = get_binary_numbers(length(G.V));
     %geneartates the hamiltonian for a defined qubit system
-    H = generate_hamiltonian(q, G);
+    H = generate_hamiltonian(q, G, 0);
     % still need to check the index value to compare
     
     

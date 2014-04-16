@@ -1,16 +1,18 @@
 
-
-% this function will generate the end result hamiltonian
-% INPUT: 	a 4 by 4 matrix telling the interaction between 2 electrons, n - 
-%			and a graph G with vertices representing each electron and edges representing each connection
-
-function [Hamiltonian, H] = generate_hamiltonian(Q,G)
-
-% 	get the matrix representing all binary numbers based on the number or vertices in the Graph
-
-%for every single edge in the graph (bidirection, we do NOT want to traverse everything twice)
-%	calculate H for each edge using the tensor product
-%	then sum up all the values so that we can get the hamiltonian and return it
+function [Hamiltonian] = generate_hamiltonian(Q,G, r)
+%function [Hamiltonian] = generate_hamiltonian(Q,G)
+% 	get the matrix representing all binary numbers based on the number or vertices 
+%   in the Graph
+% INPUT: 	Q- a 4 by 4 matrix telling the interaction between 2 electrons,
+%			G- graph with n vertices representing each electron and edges representing
+%               each connection for every single edge in the graph 
+%           r- subspace paramater, such that r specifies the number of ones
+%               a binary string (the result would be a hamiltonian for a
+%               subspace of the system.) If r == 0, then we calculate the
+%               entire hamiltonian.
+%   Idea:
+%       calculate H for each edge using the tensor product
+%       then sum up all the values so that we can get the hamiltonian and return it
 
 
 
@@ -22,6 +24,12 @@ qubit_count = length(G.V);
 
 
 B = get_binary_numbers(qubit_count);
+
+% insert this portion to allow for the Hamiltonian of a subspace to be
+% calculated
+if(r > 0)
+    B = binary_subspace(B, r);
+end
 
 Hamiltonian = zeros(2^qubit_count, 2^qubit_count);
 

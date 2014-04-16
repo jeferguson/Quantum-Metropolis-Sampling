@@ -1,13 +1,12 @@
-
+function Binary_numbers = get_binary_numbers(n)
+%function Binary_numbers = get_binary_numbers(n, s)
 %	this file will generate a N by M matrix
 %	N denoting the numbers from 0 to N-1
 % 	and M denoting the number of columns, or values wanted in the matrix
 
 
-%this number will return a matrix representing binary numbers
-% and will be passed in m, to represent 0 to k-1 numbers to convert to binary, 
-% and will also represent the number of rows in our matrix
-function Binary_numbers = get_binary_numbers(n)
+% return a matrix representing binary numbers
+% and will be passed in n, to represent 0 to k-1 numbers to convert to binary, 
 
 
 m = 2^n;

@@ -1,10 +1,26 @@
-%method call to generate the hamiltonian matrix
-%input is a 2 by 2 matrix h and an i,j 
+function [Hij] = tensor_with_identidy(Q, B, k, l)
+% function [Hij] = tensor_with_identidy(H, B, k, l)
+%   This method takes the tensor product of a reference matrix Q, defining
+%   either a 4x4 matrix or a 2x2 matrix, with the identity matrix (I)
+%   INPUT:  Q - the reference matrix for which to build the tensor product
+%                   with.  The 4x4 matrix refers to the interaction to two
+%                   qubits.  The 2x2 matrix refers to the tranform matrix
+%                   which is expanded by taking the tensor product with the
+%                   identity.
+%           B - a matrix representing corresponding binary strings, which
+%                   are used to index and build the tensor product with
+%           k - an integer referencing which quibit in the Quantum System
+%                this operation refers to.
+%           l - if l > 0,  then l refers to an additional qubit in the quantum system, and Q is a 4x4 matrix               
+%               otherwise if l < 0, l does not refer to another qubit and Q is a 2x2 matrix
+%
+%  OUTPUT:  Hij - the tensor product of Q and B
 
-%then compare each boolean strings - if everything else but i and j
-%matches, then we consult the 2 by 2 matrix H
 
-
+                    
+                    
+% FROM PRIOR AND INITIAL TESTING
+% FROM PRIOR AND INITIAL TESTING
 %	to compute the boolean strings
 %	we will create two arrays of 1024 of boolean vectors
 %	using the function: de2bi(d,n), where d is the number and n is number of columns (10 more now) 
@@ -15,7 +31,6 @@
 
 % can use kron(X, Y) to take the tensor product of X and Y
 
-function [Hij] = tensor_with_identidy(H, B, k, l)
 
 sz = size(B);
 
@@ -52,7 +67,7 @@ if l > 0
 			if (isMatch == 1)
 				x = (B(a, k) * 2) + B(a, l) + 1;
 				y = (B(b, k) * 2) + B(b, l) + 1;
-				Hij(a,b) = H(x, y);
+				Hij(a,b) = Q(x, y);
 			end
 		end
     end
@@ -77,9 +92,9 @@ elseif (l <= 0)
 			if (isMatch == 1)
 				x = B(a, r) + 1;
 				y = B(b, r) + 1;
-				Hij(a,b) = H(x, y);
+				Hij(a,b) = Q(x, y);
 			end
-		end
+        end
     end
 end
 

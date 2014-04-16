@@ -1,13 +1,18 @@
 function [ deltas] = getn_deltas(q, t, nl, nh, beta )
 %function [ deltas] = get_delta2(q, t, nl, nh, beta )
-%   returns the delta value and vector of eigenvalues (sorted)
+%   returns an array of deltas for a constant system temperature, and a
+%       increasing quantum Ring of size n, which is computed itertively
+%       from a lower bound (nl) to an upper bound (nh)
 %   INPUT
-%   K - stochastic matrix
-%   A - acceptance probability
+%   q - 4x4 matrix defining a quantum system
+%   t - 2x2 transform matrix
+%   nl - lower bound for Ring of size n
+%   nh - lower bound for Ring of size n
+%   beta - 1/(system temperature)
+%
 %   OUTPUT
-%   delta - the the delta difference value between the highest and second
-%           highest eigenvalue
-%   vi    - sorted eigenvalues 
+%   deltas - vector of deltas, which is the the the delta difference value 
+%   between the highest and second  highest eigenvalue
  
 
     deltas = zeros(nh - nl, 1);
