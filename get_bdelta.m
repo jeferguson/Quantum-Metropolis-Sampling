@@ -1,8 +1,6 @@
 function [ deltas ] = get_bdelta(  q, t, G, betas )
-%   function [ d , diff] = get_delta( q, t, G, beta )
-%   get_delta is a function which outputs a delta value which
-%   specifies the distance from the highest energy eigenvalue to the
-%   second highest eigenvalue of the quantum system
+%   function [ deltas ] = get_bdelta(  q, t, G, betas )
+%   get_bdelta %%% CHANGE AND UPDATE
 %   
 %   This function is a faster method of obtaining multiple delta values for
 %   different temperatures, given the same graph G
@@ -20,11 +18,11 @@ function [ deltas ] = get_bdelta(  q, t, G, betas )
         deltas = zeros(length(betas), 1);
 
 
-        [K, V, D, T, H] = stochastic_matrix(q, t, G);
+        [K, V, D, T, H] = stochastic_matrix(q, t, G, 0);
         
         for i = 1 : length(betas)
      
-            A = accept_prob(D, beta);
+            A = accept_prob(D, betas(i));
     
             Z = K.*A;
 

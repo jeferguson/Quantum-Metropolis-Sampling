@@ -1,6 +1,6 @@
 
 function [Hamiltonian] = generate_hamiltonian(Q,G, r)
-%function [Hamiltonian] = generate_hamiltonian(Q,G)
+%function [Hamiltonian] = generate_hamiltonian(Q,G,r)
 % 	get the matrix representing all binary numbers based on the number or vertices 
 %   in the Graph
 % INPUT: 	Q- a 4 by 4 matrix telling the interaction between 2 electrons,
@@ -23,20 +23,41 @@ edge_count = dim(1);
 qubit_count = length(G.V);
 
 
-B = get_binary_numbers(qubit_count);
-
 % insert this portion to allow for the Hamiltonian of a subspace to be
 % calculated
 if(r > 0)
-    B = binary_subspace(B, r);
+    B = binary_subspace(qubit_count, r);
+    b_dim = size(B);
+
+    Hamiltonian = zeros(b_dim(1), b_dim(1));
+
+    for i =1 : edge_count
+          Hij = tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
+          Hamiltonian = Hamiltonian + Hij;
+    end
+else 
+    B = get_binary_numbers(qubit_count);
+    b_dim = size(B);
+
+    Hamiltonian = zeros(b_dim(1), b_dim(1));
+
+    for i =1 : edge_count
+          Hij = tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
+          Hamiltonian = Hamiltonian + Hij;
+    end
 end
 
-Hamiltonian = zeros(2^qubit_count, 2^qubit_count);
+%{
+b_dim = size(B);
+
+Hamiltonian = zeros(b_dim(1), b_dim(1));
 
 for i =1 : edge_count
 	  Hij = tensor_with_identity(Q, B, G.E(i, 1), G.E(i, 2));
       Hamiltonian = Hamiltonian + Hij;
 end
+%}
+
 
 % want to ensure that this is correct and possibly use the kron(A,B), which
 % is the tensor product of two matricies instead

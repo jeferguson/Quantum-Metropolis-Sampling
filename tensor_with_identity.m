@@ -45,6 +45,7 @@ Hij = zeros(matrix_size, matrix_size);
 
 % implement a RANDOM bit flip
 r = randi(bit_count);
+r = 1;
 
 % for tensoring with a 4 by 4 matrix
 % if the value of the second index to be compared > 0, then H is a 4 by 4

@@ -1,5 +1,5 @@
-function [ d, v ] = get_delta( q, t, G, beta )
-%   function [ d , diff] = get_delta( q, t, G, beta )
+function [ d, v ] = get_delta( q, t, G, beta, r )
+%   function [ d , v] = get_delta( q, t, G, beta,r )
 %   get_delta is a function which outputs a delta value which
 %   specifies the distance from the highest energy eigenvalue to the
 %   second highest eigenvalue of the quantum system
@@ -7,6 +7,8 @@ function [ d, v ] = get_delta( q, t, G, beta )
 %       q - 4x4 matrix specifying a 2bit quantum system
 %       t - transform 2x2 matrix
 %       G - the input graph for the quantum system
+%       r - an integer defining the binary paramater to take the
+%           subspace of a subsiquent hamiltonian
 %
 %   OUTPUT:
 %       d - the detelta value (see above)
@@ -14,7 +16,7 @@ function [ d, v ] = get_delta( q, t, G, beta )
 %               value)
 
 
-        [K, V, D, T, H] = stochastic_matrix(q, t, G);
+        [K, V, D, T, H] = stochastic_matrix(q, t, G, r);
      
         A = accept_prob(D, beta);
     

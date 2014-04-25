@@ -4,14 +4,20 @@ q1 = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
 
 
 % going to try different values for beta
-beta = 5;
-g = 5;
+% beta = 1 is very reasonable
+beta = 1/3;
 
-q2 = [0 0 0 0; 0 g/2 1 0; 0 1 g/2 0; 0 0 0 0];
+% try for smaller values of g
+% if g becomes to big then the delta values become 0
+g = 0.5;
+
+q2 = [0 0 0 0; 0 g/2 1 0; 0 1 g/2 0; 0 0 0 g];
 
 t = [0 1; 1 0];
 
-deltas = getn_deltas(q2, t, 13,15, beta)
+betas = [1/32 1/16 1/8 1/4 1/2 1 2 4 8 16 32];
+
+%deltas = getn_deltas(q2, t, 3,9, beta)
 
 
 % ***************************************

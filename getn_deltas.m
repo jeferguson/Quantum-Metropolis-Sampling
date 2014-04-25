@@ -1,5 +1,5 @@
-function [ deltas] = getn_deltas(q, t, nl, nh, beta )
-%function [ deltas] = get_delta2(q, t, nl, nh, beta )
+function [ deltas] = getn_deltas(q, t, nl, nh, beta, r )
+%function [ deltas] = getn_deltas(q, t, nl, nh, beta, r )
 %   returns an array of deltas for a constant system temperature, and a
 %       increasing quantum Ring of size n, which is computed itertively
 %       from a lower bound (nl) to an upper bound (nh)
@@ -9,6 +9,7 @@ function [ deltas] = getn_deltas(q, t, nl, nh, beta )
 %   nl - lower bound for Ring of size n
 %   nh - lower bound for Ring of size n
 %   beta - 1/(system temperature)
+%   r - a binary subspace paramater
 %
 %   OUTPUT
 %   deltas - vector of deltas, which is the the the delta difference value 
@@ -23,7 +24,7 @@ function [ deltas] = getn_deltas(q, t, nl, nh, beta )
     
     while  n <= nh
                 
-        deltas(index) = get_delta(q,t, Ring(n), beta);
+        deltas(index) = get_delta(q,t, Ring(n), beta, r);
         
         
         n = n + 1;
