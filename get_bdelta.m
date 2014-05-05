@@ -1,5 +1,5 @@
-function [ deltas ] = get_bdelta(  q, t, G, betas )
-%   function [ deltas ] = get_bdelta(  q, t, G, betas )
+function [ deltas, avgs ] = get_bdelta(  q, t, G, betas )
+%   function [ deltas, avgs ] = get_bdelta(  q, t, G, betas )
 %   get_bdelta %%% CHANGE AND UPDATE
 %   
 %   This function is a faster method of obtaining multiple delta values for
@@ -16,6 +16,8 @@ function [ deltas ] = get_bdelta(  q, t, G, betas )
 %               value)
 
         deltas = zeros(length(betas), 1);
+        
+        avgs = zeros(length(betas), 1);
 
 
         [K, V, D, T, H] = stochastic_matrix(q, t, G, 0);
@@ -26,13 +28,15 @@ function [ deltas ] = get_bdelta(  q, t, G, betas )
     
             Z = K.*A;
 
-            Zs = make_stoc(Z);
+            [Zs, avg] = make_stoc(Z);
     
             v = sort(abs(eig(Zs)), 1, 'descend');
 
             d = v(1) - v(2);
             
             deltas(i) = d;
+            
+            avgs(i) = avg;
         
         end
 

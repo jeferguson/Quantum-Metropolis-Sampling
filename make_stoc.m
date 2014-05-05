@@ -1,18 +1,24 @@
-function [ S ] = make_stoc( M )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-%function [ S ] = make_stoc( M )
+function [ S, avg ] = make_stoc( M )
+%function [ S, avg ] = make_stoc( M )
+%   Makes an input Matrix M column stochastic
+%   INPUT  : M - input matrix
+%
+%   OUTPUT : S - output column stochastic matrix
+%            avg - output avg valued added to each diagonal
 
 
     S = M;
     cSum = sum(M);
     
+    avg = 0;
+    
     for i = 1: length(cSum)
         p = 1 - cSum(i);
+        avg = avg + p;
         S(i,i) = M(i,i) + p;
     end
     
-
+    avg = avg/length(cSum);
 
     %{
     dims = size(M);

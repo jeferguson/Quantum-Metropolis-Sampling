@@ -4,9 +4,14 @@ function [b, S ] = check_stoc( M, r )
 % whether we wish to check that M is a right_stochastic matrix, or a left
 % stochastic matrix.
 %
-%   INPUT: matrix M, and boolean value r denoting whether checking
-%   left/right valued matrix (r == 1) check right, (r == ) check left
-
+%   INPUT: 
+%       M - matrix, 
+%       r - boolean value  denoting whether checking left/right valued 
+%           matrix (r == 0) check right, (r == 1) check left
+%
+%       left stochastic: sum up each column == 1
+%       right stochastic: sum up each row == 1
+%
 %   OUTPUT: a vector S of the summed values of the stochasitc matrix
 %           and a boolean value b, such that if b == 1 then M is
 %           stochastic and if b != 1 then M is not Stochastic

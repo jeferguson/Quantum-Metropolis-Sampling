@@ -62,11 +62,12 @@ function [ K, V, D, T, H] = stochastic_matrix( q, t, G, r )
         B = get_binary_numbers(length(G.V));
         
         
-        T = tensor_with_identity(t, B, 1, 0)
+        T = tensor_with_identity(t, B, 1, 0);
         %obtain the eigenvalue and eigenvectors of the hamiltonian
+        % then calculate the stochasitic matrix
+
         [V, D] = eig(H);
         P = V'*(T*V);
-        % now calculate the stochasitic matrix
         K = P.*conj(P);
   
     end

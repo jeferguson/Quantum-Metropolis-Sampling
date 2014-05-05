@@ -24,7 +24,7 @@ function [ deltas] = getn_deltas(q, t, nl, nh, beta, r )
     
     while  n <= nh
                 
-        deltas(index) = get_delta(q,t, Ring(n), beta, r);
+        [deltas(index) avg] = get_delta(q,t, Ring(n), beta, r);
         
         
         n = n + 1;

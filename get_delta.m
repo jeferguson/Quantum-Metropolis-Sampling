@@ -1,4 +1,4 @@
-function [ d, v ] = get_delta( q, t, G, beta, r )
+function [ d, v, avg ] = get_delta( q, t, G, beta, r )
 %   function [ d , v] = get_delta( q, t, G, beta,r )
 %   get_delta is a function which outputs a delta value which
 %   specifies the distance from the highest energy eigenvalue to the
@@ -22,7 +22,10 @@ function [ d, v ] = get_delta( q, t, G, beta, r )
     
         Z = K.*A;
 
-        Zs = make_stoc(Z);
+        [Zs avg] = make_stoc(Z);
+        
+        %help = ['beta is ' beta 'avg stochastic val is' avg] ;
+        %disp(help);
     
         v = sort(abs(eig(Zs)), 1, 'descend');
 
