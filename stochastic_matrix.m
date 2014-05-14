@@ -23,32 +23,10 @@ function [ K, V, D, T, H] = stochastic_matrix( q, t, G, r )
     %generates a matrix of binary numbers
     if( r > 0 )
         
-        
-        
-        % possibly change this back later!
-        % this is no longer doing a random bit flip, but only the first bit
-        %B = binary_subspace(length(G.V), r);
-        %T = tensor_with_identity(t, B, 1, 0)
-        
-        nk2 = ceil(nchoosek(length(G.V), r)/2);
-        T = kron(eye(nk2), t);
-        
-        % to correct for error of size in T
-        % this will remove the last row and last column in T, so that it
-        % should now have the 
-        h_dims = size(H);
-        t_dims = size(T);
-        while(t_dims(1) > h_dims(1))
-            T(t_dims(1),:) = [];
-            T(:, t_dims(1)) = [];
-            if(size(T) ~= size(H))
-                err = MException('ResultChk:OutOfRange', 'Dimmensions of T and H do not match');
-                throw(err);
-            end
-            
-            t_dims = size(T);
-            
-        end
+        length(G.V)
+                
+        T = transform_subspace(length(G.V), r);
+       
         
         %obtain the eigenvalue and eigenvectors of the hamiltonian
         [V, D] = eig(H);
