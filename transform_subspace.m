@@ -23,23 +23,24 @@ function [ T ] = transform_subspace( n, r )
     
     
     T = eye(nchoosek(n,r));
+    T = T*0.5;
     
     entries = nchoosek(n,r);
     
     
     
     if(r == 3)
-       T(1,2) = 1;
-       T(1,3) = 1;
+       T(1,2) = 1/4;
+       T(1, length(T)) = 1/4;
        T(entries, entries - 1) = 1;
-       T(entries, entries - 2) = 1;
+       T(entries, 1) = 1/4;
        
        for i = 2: (entries - 1)
-           T(i, i-1) = 1;
-           T(i, i+1) = 1;
+           T(i, i-1) = 1/4;
+           T(i, i+1) = 1/4;
        end
         
-    
+    %{
     
     elseif(r == 4)
         T(1,2) = 1;
@@ -73,16 +74,17 @@ function [ T ] = transform_subspace( n, r )
             
         end
 
+    %}
         
     else 
-        err = MException('ResultChk:OutOfRange', 'the input r value is only allowed to be 3 or 4');
+        err = MException('ResultChk:OutOfRange', 'the input r value is only allowed to be 3');
         throw(err);
 
     end
     
    
     
-    % do for 4 also...
+    %{
     
     dims = size(T);
     
@@ -132,7 +134,7 @@ function [ T ] = transform_subspace( n, r )
     end
     
     
-
+    %}
 
 end
 
