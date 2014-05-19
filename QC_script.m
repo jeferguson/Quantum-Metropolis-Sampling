@@ -11,20 +11,24 @@ q1 = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 -1];
 % if g becomes to big then the delta values become 0
 g = 0.5;
 
+% hxx matrix
 q2 = [0 0 0 0; 0 g/2 1 0; 0 1 g/2 0; 0 0 0 g];
 
+% bit flip transform matrix
 t = [0 1; 1 0];
 
 betas = [1/256 1/128 1/64 1/32 1/16 1/8 1/4 1/2 1 2 4 8 16 32 64 128 256];
 
 
+% 5/19/2014
+% this will get the delta values for a quantum ring of sizes 25 to 35, with
+% beta = 0.5, and a binary subspace of 3-bits.  
+d = getn_deltas(q2, t, 25, 35, 0.5, 3)
 
+% 5/19/2014
+% this will plot the inverse of the delta values (1/delta) 
+plotdelta(d)
 
-%h1 = getn_deltas(q1, t, 5, 14, 1.0, 0)
-
-%h2 = getn_deltas(q1, t, 5, 14, 0.5, 0)
-
-%h3 = getn_deltas(q1, t, 5, 14, 5, 0)
 
 
 
